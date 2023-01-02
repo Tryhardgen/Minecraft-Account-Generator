@@ -1,0 +1,17 @@
+{
+		"country": "Australia",
+		"gplink": "https://www.xbox.com/en-US/xbox-game-pass",
+		"userprefix": "wwwww",
+		"webhook": "webhook here",
+		"nopecha": "free",
+		"browser": "firefox",
+		"carding": {
+				"bin": "423953007567xxxx",
+				"cvv": "000",
+				"expiry": {
+						"month": "04",
+						"year": "05"
+				},
+				"postalcode": "1010"
+		}
+}

@@ -1,0 +1,191 @@
+{
+  "name": "NopeCHA: CAPTCHA Solver",
+  "action": {
+    "default_title": "NopeCHA: CAPTCHA Solver",
+    "default_icon": "icon/16.png",
+    "default_popup": "popup.html"
+  },
+  "browser_action": {
+    "default_title": "NopeCHA: CAPTCHA Solver",
+    "default_icon": "icon/16.png",
+    "default_popup": "popup.html"
+  },
+  "version": "0.3.0",
+  "description": "Automatically solve reCAPTCHA, hCaptcha, FunCAPTCHA, AWS WAF, and text CAPTCHA using AI.",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "storage",
+    "scripting"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "utils.js",
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "*://nopecha.com/setup"
+      ],
+      "js": [
+        "setup.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "*://*.hcaptcha.com/captcha/*"
+      ],
+      "js": [
+        "hcaptcha.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "*://*.hcaptcha.com/captcha/*"
+      ],
+      "js": [
+        "hcaptcha_fast.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "hcaptcha_language.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "recaptcha.js",
+        "recaptcha_speech.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "*://*.google.com/recaptcha/*",
+        "*://*.recaptcha.net/recaptcha/*",
+        "*://recaptcha.net/recaptcha/*"
+      ],
+      "js": [
+        "recaptcha_fast.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "*://*.arkoselabs.com/fc/*",
+        "*://*.funcaptcha.com/fc/*"
+      ],
+      "js": [
+        "funcaptcha.js",
+        "funcaptcha_scrape.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "*://*.arkoselabs.com/fc/*",
+        "*://*.funcaptcha.com/fc/*"
+      ],
+      "js": [
+        "funcaptcha_fast.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "awscaptcha.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "textcaptcha.js",
+        "locate.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "*://challenges.cloudflare.com/cdn-cgi/challenge-platform/turnstile/*"
+      ],
+      "js": [
+        "turnstile.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "*://nopecha.com/demo/funcaptcha"
+      ],
+      "js": [
+        "funcaptcha_demo.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false,
+      "match_about_blank": false
+    }
+  ],
+  "icons": {
+    "16": "icon/16.png",
+    "32": "icon/32.png",
+    "48": "icon/48.png",
+    "128": "icon/128.png"
+  },
+  "manifest_version": 2,
+  "background": {
+    "page": "page.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "101.0",
+      "id": "{2f67aecb-5dac-4f76-9378-0ac4f2bedc9c}"
+    }
+  }
+}

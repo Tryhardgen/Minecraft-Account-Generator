@@ -1,0 +1,2 @@
+pip install undetected_chromedriver selenium seleniumwebdriver colorama termcolor pyfiglet luhn_validator colorama discord_webhook
+python generator.py
